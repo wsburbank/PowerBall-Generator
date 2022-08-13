@@ -12,15 +12,22 @@ gen: function [] [
 		clear x 0
 		foreach i [1 2 3 4 5] [
 			until [
-				y: random 67
+				y: random/secure 69
 				not find x y
 			]
 			if y < 10 [
 				append x 0
-				]
+			]
 			append x y
 			append x "  "
 		]
+		y: random/secure 26
+		if y < 10 [
+			append x 0
+		]
+		append x y
+		append x "  "
+
 		return x
 	]
 
