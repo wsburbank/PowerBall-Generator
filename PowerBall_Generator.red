@@ -10,25 +10,25 @@ Red [
 gen: function [] [
 		x: [1]
 		clear x 0
-		append x random 67
-		append x " "
-		append x random 67
-		append x " "
-		append x random 67
-		append x " "
-		append x random 67
-		append x " "
-		append x random 67
-		append x " "
-		append x random 31
-		return append "^(line)" x
+		foreach i [1 2 3 4 5] [
+			until [
+				y: random 67
+				not find x y
+			]
+			if y < 10 [
+				append x 0
+				]
+			append x y
+			append x "  "
+		]
+		return x
 	]
 
 results: "winning numbers"
 view [
 	size 350x450
 	title "Generate Power Ball Tickets"
-	button "Generate" [append results gen]
+	button "Generate" [append append results "^(line)" gen]
 	return
 	winners: area results
 	]
